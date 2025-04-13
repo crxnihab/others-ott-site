@@ -1,131 +1,222 @@
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  transition: background 0.3s, color 0.3s;
-  background-color: #000;
+  background-color: #111;
   color: #fff;
-  position: relative;
 }
 
 .container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 40px 20px 20px;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 100;
-  color: #fff;
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  background: gray;
+  border-radius: 50%;
+  margin: 0 auto 20px;
 }
 
-.profile-pic {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  background: url('https://i.postimg.cc/kMK3gcsd/IMG-20250410-224215-546.jpg') center/cover no-repeat;
-  margin: 0 auto 20px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+.button-group a {
+  flex: 1;
+  text-align: center;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
 .join-btn {
-  display: inline-block;
-  padding: 12px 30px;
-  border-radius: 30px;
-  background-color: #fff;
-  color: #000;
-  font-weight: bold;
-  text-decoration: none;
-  margin-bottom: 15px;
-  transition: all 0.3s ease;
-}
-.join-btn:hover {
-  background-color: #ddd;
+  background-color: #e50914;
 }
 
-.bio {
+.request-btn {
+  background-color: #444;
+}
+
+/* মোবাইলেও পাশাপাশি থাকবে */
+.button-group {
+  display: flex;
+  gap: 10px;
   margin-bottom: 20px;
-  font-size: 15px;
-  color: #ccc;
+}
+.bio, .description {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 14px;
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
+
 .social-icons a {
-  width: 45px;
-  height: 45px;
-  background-color: #fff;
+  color: white;
+  font-size: 20px;
+}
+
+/* Highlight Card: About Section */
+.highlight-card {
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+/* ডার্ক মোডে - সাদা ব্যাকগ্রাউন্ড, কালো লেখা */
+body.dark .highlight-card {
+  background: #fff;
   color: #000;
+}
+
+/* লাইট মোডে - কালো ব্যাকগ্রাউন্ড, সাদা লেখা */
+body:not(.dark) .highlight-card {
+  background: #111;
+  color: #fff;
+}
+.training-movies {
+  margin-top: 40px;
+}
+
+.swiper {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.swiper-slide {
+  background: #222;
+  border-radius: 10px;
+  width: 160px !important;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.swiper-slide img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.movie-title {
+  font-weight: bold;
+  margin: 8px 0 4px;
+}
+
+.movie-year,
+.movie-rating {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* Movie Popup */
+.movie-popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.movie-popup-content {
+  background: #222;
+  color: #fff;
+  padding: 20px;
+  width: 90%;
+  max-width: 350px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.movie-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Join Popup */
+.popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background: #fff;
+  color: #111;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  max-width: 300px;
+}
+
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #e50914;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #222;
   border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  font-size: 20px;
-  transition: transform 0.2s ease, background 0.3s ease;
-}
-.social-icons a:hover {
-  transform: scale(1.1);
-  background-color: #e0e0e0;
+  cursor: pointer;
 }
 
-.highlight-card {
-  background-color: #1c1c1c;
-  padding: 20px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-}
-.highlight-card h3 {
-  margin: 0 0 10px;
+.theme-toggle i {
   font-size: 18px;
-  color: #00ffc3;
-}
-
-.description {
-  background-color: #fff;
-  color: #000;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  font-size: 16px;
 }
 
 footer {
   text-align: center;
   padding: 20px;
-  font-size: 14px;
-  color: #999;
-}
-
-body.light {
-  background-color: #f4f4f4;
-  color: #000;
-}
-body.light .theme-toggle {
-  color: #000;
-}
-body.light .join-btn {
+  font-size: 12px;
+  color: #aaa;
   background-color: #000;
-  color: #fff;
-}
-body.light .social-icons a {
-  background-color: #000;
-  color: #fff;
-}
-body.light .description {
-  background-color: #000;
-  color: #fff;
-}
-body.light .highlight-card {
-  background-color: #f0f0f0;
+  margin-top: 40px;
 }
