@@ -20,7 +20,9 @@ h3 {
 .profile-pic {
   width: 120px;
   height: 120px;
-  background: gray;
+  background-image: url('https://i.postimg.cc/kMK3gcsd/IMG-20250410-224215-546.jpg');
+  background-size: cover;
+  background-position: center;
   border-radius: 50%;
   margin: 0 auto 20px;
 }
