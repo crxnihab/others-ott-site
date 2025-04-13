@@ -25,6 +25,19 @@ h3 {
   background-position: center;
   border-radius: 50%;
   margin: 0 auto 20px;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+/* লাইট মোডে বর্ডার কালো */
+body:not(.dark) .profile-pic {
+  border: 2px solid #222;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ডার্ক মোডে বর্ডার লাল */
+body.dark .profile-pic {
+  border: 2px solid #e50914;
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.4);
 }
 
 .button-group a {
@@ -45,12 +58,12 @@ h3 {
   background-color: #444;
 }
 
-/* মোবাইলেও পাশাপাশি থাকবে */
 .button-group {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
+
 .bio, .description {
   text-align: center;
   margin-bottom: 20px;
@@ -65,11 +78,17 @@ h3 {
 }
 
 .social-icons a {
-  color: white;
   font-size: 20px;
+  transition: color 0.3s;
 }
 
-/* Highlight Card: About Section */
+body.dark .social-icons a {
+  color: white;
+}
+body:not(.dark) .social-icons a {
+  color: black;
+}
+
 .highlight-card {
   padding: 15px;
   border-radius: 10px;
@@ -78,17 +97,16 @@ h3 {
   transition: all 0.3s ease;
 }
 
-/* ডার্ক মোডে - সাদা ব্যাকগ্রাউন্ড, কালো লেখা */
 body.dark .highlight-card {
   background: #fff;
   color: #000;
 }
 
-/* লাইট মোডে - কালো ব্যাকগ্রাউন্ড, সাদা লেখা */
 body:not(.dark) .highlight-card {
   background: #111;
   color: #fff;
 }
+
 .training-movies {
   margin-top: 40px;
 }
@@ -110,12 +128,19 @@ body:not(.dark) .highlight-card {
 
 .swiper-slide img {
   width: 100%;
+  height: 240px;
+  object-fit: cover;
   border-radius: 5px;
 }
 
 .movie-title {
   font-weight: bold;
   margin: 8px 0 4px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 .movie-year,
@@ -194,7 +219,6 @@ body:not(.dark) .highlight-card {
   text-decoration: none;
 }
 
-/* Theme toggle */
 .theme-toggle {
   position: absolute;
   top: 10px;
