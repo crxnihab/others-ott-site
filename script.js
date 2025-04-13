@@ -16,27 +16,28 @@ function toggleTheme() {
   }
 }
 
-// Join Popup
 function closeJoinPopup() {
   document.getElementById("join-popup").style.display = "none";
 }
 
-// Movie Popup
 function closeMoviePopup() {
   document.getElementById("movie-popup").style.display = "none";
 }
 
-const trainingMovies = [
-  "Inception", "The Matrix", "Interstellar",
-  "The Dark Knight", "Tenet", "Avatar", "Gladiator"
+const trendingMovies = [
+  "Inception", "The Matrix", "Interstellar", "The Dark Knight", "Tenet", "Avatar", "Gladiator"
+];
+
+const latestMovies = [
+  "Dune", "Oppenheimer", "John Wick 4", "The Marvels", "Jawan", "Salaar", "Leo"
 ];
 
 const apiKey = "7597b42a";
 
-async function fetchTrainingMovies() {
-  const container = document.getElementById("training-movie-list");
+async function fetchMovies(movieList, containerId) {
+  const container = document.getElementById(containerId);
 
-  for (const title of trainingMovies) {
+  for (const title of movieList) {
     try {
       const res = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`);
       const data = await res.json();
@@ -51,10 +52,7 @@ async function fetchTrainingMovies() {
           <div class="movie-rating">IMDb: ${data.imdbRating}</div>
         `;
 
-        slide.onclick = () => {
-          showMoviePopup(data);
-        };
-
+        slide.onclick = () => showMoviePopup(data);
         container.appendChild(slide);
       }
     } catch (err) {
@@ -62,7 +60,7 @@ async function fetchTrainingMovies() {
     }
   }
 
-  new Swiper(".mySwiper", {
+  new Swiper(`#${containerId === "training-movie-list" ? "trending-swiper" : "latest-swiper"}`, {
     slidesPerView: 2,
     spaceBetween: 20,
     loop: true,
@@ -100,9 +98,9 @@ function showMoviePopup(data) {
 }
 
 window.onload = () => {
-  fetchTrainingMovies();
+  fetchMovies(trendingMovies, "training-movie-list");
+  fetchMovies(latestMovies, "latest-movie-list");
 
-  // Show join popup only once
   if (!localStorage.getItem("joinShown")) {
     document.getElementById("join-popup").style.display = "flex";
     localStorage.setItem("joinShown", "true");
